@@ -43,7 +43,7 @@ fun BottomNavBar(navController: NavHostController) {
             )
         )
     }
-    if (selectedScreen != AppDestination.BoardingScreen.route) {
+    if (selectedScreen != AppDestination.BoardingScreen.route && selectedScreen != AppDestination.DetailsScreen.route) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()

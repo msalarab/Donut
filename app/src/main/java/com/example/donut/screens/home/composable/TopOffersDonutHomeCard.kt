@@ -39,11 +39,13 @@ import com.example.donut.ui.theme.Typography
 @Composable
 fun TopOffersDonutHomeCard(
     backgroundTint: Color = Pink30,
-    state : TopOffersDonutUiState = TopOffersDonutUiState(),
-    onClickIconFavorite : () -> Unit
+    state: TopOffersDonutUiState = TopOffersDonutUiState(),
+    onClickCard: () -> Unit,
+    onClickIconFavorite: () -> Unit
 ) {
 
-    val transition = updateTransition(targetState = state.favoriteIcon, label = "iconFavoriteAnimation")
+    val transition =
+        updateTransition(targetState = state.favoriteIcon, label = "iconFavoriteAnimation")
     val iconColor = transition.animateColor(label = "") { transitionState ->
         when (transitionState) {
             true -> Color.White
@@ -65,7 +67,7 @@ fun TopOffersDonutHomeCard(
                 .clip(RoundedCornerShape(20.dp))
                 .background(backgroundTint)
                 .shadow(elevation = 1.dp, spotColor = ShadowColor)
-                .clickable { }
+                .clickable { onClickCard() }
         ) {
 
             RoundedButton(

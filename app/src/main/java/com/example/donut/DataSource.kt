@@ -6,11 +6,11 @@ import com.example.donut.screens.home.TopOffersDonutUiState
 object DataSource {
 
     val topOffers = listOf(
-        TopOffersDonutUiState(image = R.drawable.image_7, title = "Strawberry Wheel", description = "These Baked Strawberry Donuts are filled with fresh strawberries...", price = "$20", discount = "$15"),
-        TopOffersDonutUiState(image = R.drawable.image_7, title = "Chocolate Glaze", description = " A chocolate-flavored donut often coated with chocolate.", price = "$30", discount = "$25"),
-        TopOffersDonutUiState(image = R.drawable.image_7, title = "Jelly Donut", description = "Moist and fluffy baked chocolate donuts full of chocolate flavor.", price = "$40", discount = "$35"),
-        TopOffersDonutUiState(image = R.drawable.image_7, title = "Old-Fashioned", description = "A donut made with chunks of apple mixed into the dough.", price = "$15", discount = "$10"),
-        TopOffersDonutUiState(image = R.drawable.image_7, title = "Apple Fritter", description = "A donut made with chunks of apple mixed into the dough.", price = "$10", discount = "$5"),
+        TopOffersDonutUiState(image = R.drawable.image_7, title = "Strawberry Wheel", description = "These Baked Strawberry Donuts.", price = "$20", discount = "$15"),
+        TopOffersDonutUiState(image = R.drawable.image_7, title = "Chocolate Glaze", description = " A chocolate-flavored donut.", price = "$30", discount = "$25"),
+        TopOffersDonutUiState(image = R.drawable.image_7, title = "Jelly Donut", description = "Moist and fluffy baked chocolate donut.", price = "$40", discount = "$35"),
+        TopOffersDonutUiState(image = R.drawable.image_7, title = "Old-Fashioned", description = "Moist and fluffy baked chocolate donut.", price = "$15", discount = "$10"),
+        TopOffersDonutUiState(image = R.drawable.image_7, title = "Apple Fritter", description = "Moist and fluffy baked chocolate donut.", price = "$10", discount = "$5"),
         TopOffersDonutUiState(image = R.drawable.image_7, title = "Powdered Sugar Donut", description = "A simple donut covered in powdered sugar.", price = "$13", discount = "$8"),
     )
 

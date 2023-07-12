@@ -6,5 +6,5 @@ import androidx.navigation.compose.composable
 import com.example.donut.AppDestination
 
 fun NavGraphBuilder.detailsRoute(navHostController : NavHostController){
-    composable(AppDestination.DetailsScreen.route) {  }
+    composable(AppDestination.DetailsScreen.route) { DetailsScreen() }
 }

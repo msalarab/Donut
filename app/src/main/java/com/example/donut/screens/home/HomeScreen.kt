@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.donut.AppDestination
 import com.example.donut.R
 import com.example.donut.screens.home.composable.DonutsHomeCard
 import com.example.donut.screens.home.composable.HomeHeader
@@ -31,11 +32,15 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    HomeContent(state, viewModel)
+    HomeContent(state, viewModel, navHostController)
 }
 
 @Composable
-fun HomeContent(state: HomeUiState, homeInteraction: HomeInteraction) {
+fun HomeContent(
+    state: HomeUiState,
+    homeInteraction: HomeInteraction,
+    navHostController: NavHostController
+) {
     Column(
         modifier = Modifier
             .background(Background)
@@ -61,9 +66,9 @@ fun HomeContent(state: HomeUiState, homeInteraction: HomeInteraction) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     itemsIndexed(state.topOffers) { index, item ->
-                        TopOffersDonutHomeCard(state = state.topOffers[index]) {
-                            homeInteraction.onClickCardFavoriteIcon(index)
-                        }
+                        TopOffersDonutHomeCard(state = state.topOffers[index],
+                            onClickCard = { navHostController.navigate(AppDestination.DetailsScreen.route) },
+                            onClickIconFavorite = { homeInteraction.onClickCardFavoriteIcon(index) })
                     }
                 }
             }
