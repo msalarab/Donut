@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,6 +27,8 @@ import com.example.donut.screens.home.composable.DonutsHomeCard
 import com.example.donut.screens.home.composable.HomeHeader
 import com.example.donut.screens.home.composable.TopOffersDonutHomeCard
 import com.example.donut.ui.theme.Background
+import com.example.donut.ui.theme.BlueCard
+import com.example.donut.ui.theme.Pink30
 import com.example.donut.ui.theme.Pink90
 import com.example.donut.ui.theme.Typography
 
@@ -67,7 +70,8 @@ fun HomeContent(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     itemsIndexed(state.topOffers) { index, item ->
-                        TopOffersDonutHomeCard(state = state.topOffers[index],
+                        val color = if (index % 2 != 0) BlueCard else Pink30
+                        TopOffersDonutHomeCard(backgroundTint = color, state = state.topOffers[index],
                             onClickCard = { navHostController.navigateToDetailsScreen(index) },
                             onClickIconFavorite = { homeInteraction.onClickCardFavoriteIcon(index) })
                     }
