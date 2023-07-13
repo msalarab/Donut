@@ -56,7 +56,7 @@ fun HomeContent(
 
             item {
                 Text(
-                    modifier = Modifier.padding(start = 16.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
                     text = stringResource(R.string.today_offers),
                     style = Typography.bodyLarge
                 )
