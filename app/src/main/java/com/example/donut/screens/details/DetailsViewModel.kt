@@ -1,9 +1,12 @@
 package com.example.donut.screens.details
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.donut.DataSource
+import com.example.donut.ui.theme.BlueCard
+import com.example.donut.ui.theme.Pink30
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -31,6 +34,7 @@ class DetailsViewModel @Inject constructor(
                         title = topOffersDonutUiState.title,
                         description = topOffersDonutUiState.description,
                         price = topOffersDonutUiState.discount,
+                        backgroundColor = if (index % 2 != 0) BlueCard else Pink30,
                         favorite = topOffersDonutUiState.favoriteIcon
                     )
                 }

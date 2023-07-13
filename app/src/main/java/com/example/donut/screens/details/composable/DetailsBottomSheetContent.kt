@@ -76,8 +76,15 @@ fun DetailsBottomSheetContent(
                 )
             }
 
-            Text(modifier = Modifier.padding(horizontal = 16.dp), text = state.quantity.toString())
+            RoundedButton(
+                modifier = Modifier.padding(horizontal = 8.dp),
+                roundedSize = 12,
+                tintColor = Color.Transparent,
+                onClick = {}
+            ) {
+                Text(modifier = Modifier.padding(horizontal = 16.dp), text = state.quantity.toString())
 
+            }
             RoundedButton(
                 roundedSize = 12,
                 tintColor = Color.Black,
