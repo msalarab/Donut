@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -17,15 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.donut.screens.home.DonutsUiState
 import com.example.donut.ui.theme.Pink90
-import com.example.donut.ui.theme.PrimaryText
+import com.example.donut.ui.theme.SecondaryText
 import com.example.donut.ui.theme.ShadowColor
 import com.example.donut.ui.theme.Typography
 
@@ -40,15 +39,21 @@ fun DonutsHomeCard(
         Box(
             modifier = Modifier
                 .height(111.dp)
-                .defaultMinSize(minWidth = 138.dp)
-                .clip(
-                    RoundedCornerShape(
+                .defaultMinSize(minWidth = 138.dp).graphicsLayer(
+                    shape = RoundedCornerShape(
                         topStart = 20.dp,
                         topEnd = 20.dp,
                         bottomStart = 10.dp,
                         bottomEnd = 10.dp
-                    )
-                )
+                    ),
+                    shadowElevation = 10f,
+                    spotShadowColor = Color.Gray,
+                ).clip(RoundedCornerShape(
+                    topStart = 20.dp,
+                    topEnd = 20.dp,
+                    bottomStart = 10.dp,
+                    bottomEnd = 10.dp
+                ))
                 .background(backgroundTint)
                 .shadow(elevation = 1.dp, spotColor = ShadowColor)
                 .clickable { }
@@ -63,11 +68,11 @@ fun DonutsHomeCard(
                         text = state.title,
                         style = Typography.bodySmall.copy(
                             fontWeight = FontWeight.SemiBold,
-                            color = PrimaryText
+                            color = SecondaryText
                         )
                     )
                     Text(
-                        text = state.price,
+                        text = "€${state.price}",
                         style = Typography.bodySmall.copy(fontWeight = FontWeight.SemiBold, color = Pink90)
                     )
                 }

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.example.donut.R
 import com.example.donut.components.RoundedButton
 import com.example.donut.ui.theme.Pink90
-import com.example.donut.ui.theme.PrimaryText
+import com.example.donut.ui.theme.SecondaryText
 import com.example.donut.ui.theme.Typography
 
 @Composable
@@ -33,7 +33,7 @@ fun HomeHeader(modifier: Modifier = Modifier) {
             )
             Text(
                 text = stringResource(R.string.order_your_favourite_donuts_from_here),
-                style = Typography.bodyMedium.copy(color = PrimaryText)
+                style = Typography.bodyMedium.copy(color = SecondaryText)
             )
         }
 

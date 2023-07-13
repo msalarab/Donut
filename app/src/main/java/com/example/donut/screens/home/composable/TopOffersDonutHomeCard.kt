@@ -1,7 +1,5 @@
 package com.example.donut.screens.home.composable
 
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,7 +12,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,12 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.donut.R
-import com.example.donut.components.RoundedButton
+import com.example.donut.components.FavoriteButtonAnimation
 import com.example.donut.screens.home.TopOffersDonutUiState
 import com.example.donut.ui.theme.Pink30
-import com.example.donut.ui.theme.Pink90
-import com.example.donut.ui.theme.PrimaryText
+import com.example.donut.ui.theme.SecondaryText
 import com.example.donut.ui.theme.ShadowColor
 import com.example.donut.ui.theme.Typography
 
@@ -44,21 +39,6 @@ fun TopOffersDonutHomeCard(
     onClickIconFavorite: () -> Unit
 ) {
 
-    val transition =
-        updateTransition(targetState = state.favoriteIcon, label = "iconFavoriteAnimation")
-    val iconColor = transition.animateColor(label = "") { transitionState ->
-        when (transitionState) {
-            true -> Color.White
-            false -> Pink90
-        }
-    }
-
-    val backgroundIconColor = transition.animateColor(label = "") { transitionState ->
-        when (transitionState) {
-            true -> Pink90
-            false -> Color.White
-        }
-    }
     Box(Modifier.padding(end = 40.dp)) {
 
         Box(
@@ -70,20 +50,7 @@ fun TopOffersDonutHomeCard(
                 .clickable { onClickCard() }
         ) {
 
-            RoundedButton(
-                tintColor = backgroundIconColor.value,
-                roundedSize = 50,
-                onClick = { onClickIconFavorite() },
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.TopStart)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_like_heart),
-                    contentDescription = "like",
-                    tint = iconColor.value
-                )
-            }
+            FavoriteButtonAnimation(iconState = state.favoriteIcon , roundedSize = 50, onClickIconFavorite = onClickIconFavorite)
 
             Box(
                 modifier = Modifier
@@ -101,7 +68,7 @@ fun TopOffersDonutHomeCard(
                     Text(
                         modifier = Modifier.padding(bottom = 4.dp),
                         text = state.description,
-                        style = Typography.bodySmall.copy(color = PrimaryText)
+                        style = Typography.bodySmall.copy(color = SecondaryText)
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -110,14 +77,14 @@ fun TopOffersDonutHomeCard(
                     ) {
                         Text(
                             modifier = Modifier.padding(end = 4.dp),
-                            text = state.price,
+                            text = "€${state.price}",
                             style = Typography.bodySmall.copy(
-                                color = PrimaryText,
+                                color = SecondaryText,
                                 textDecoration = TextDecoration.LineThrough
                             )
                         )
                         Text(
-                            text = state.discount,
+                            text = "€${state.discount}",
                             style = Typography.headlineSmall.copy(
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.SemiBold

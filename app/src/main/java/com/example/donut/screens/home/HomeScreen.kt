@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -20,10 +21,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.donut.AppDestination
 import com.example.donut.R
+import com.example.donut.screens.details.navigateToDetailsScreen
 import com.example.donut.screens.home.composable.DonutsHomeCard
 import com.example.donut.screens.home.composable.HomeHeader
 import com.example.donut.screens.home.composable.TopOffersDonutHomeCard
 import com.example.donut.ui.theme.Background
+import com.example.donut.ui.theme.Pink90
 import com.example.donut.ui.theme.Typography
 
 @Composable
@@ -41,18 +44,16 @@ fun HomeContent(
     homeInteraction: HomeInteraction,
     navHostController: NavHostController
 ) {
-    Column(
-        modifier = Modifier
-            .background(Background)
-            .fillMaxSize()
-            .padding(vertical = 32.dp)
-    ) {
-        HomeHeader(modifier = Modifier.padding(horizontal = 16.dp))
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(vertical = 16.dp)
+            modifier = Modifier.fillMaxSize().background(Background),
+            contentPadding = PaddingValues(top= 32.dp, bottom = 16.dp)
         ) {
+
+            item {
+                HomeHeader(modifier = Modifier.padding(horizontal = 16.dp))
+            }
+
             item {
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
@@ -67,7 +68,7 @@ fun HomeContent(
                 ) {
                     itemsIndexed(state.topOffers) { index, item ->
                         TopOffersDonutHomeCard(state = state.topOffers[index],
-                            onClickCard = { navHostController.navigate(AppDestination.DetailsScreen.route) },
+                            onClickCard = { navHostController.navigateToDetailsScreen(index) },
                             onClickIconFavorite = { homeInteraction.onClickCardFavoriteIcon(index) })
                     }
                 }
@@ -91,6 +92,6 @@ fun HomeContent(
                     }
                 }
             }
-        }
+
     }
 }

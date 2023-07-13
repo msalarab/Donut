@@ -10,13 +10,13 @@ data class TopOffersDonutUiState(
     val image : Int = 0,
     val title : String = "",
     val description: String = "",
-    val price: String = "",
-    val discount: String = "",
+    val price: Int = 0,
+    val discount: Int = 0,
 )
 
 data class DonutsUiState(
     val image : Int = 0,
     val title : String = "",
-    val price: String = "",
+    val price: Int = 0,
 )
 
