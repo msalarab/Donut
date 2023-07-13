@@ -70,14 +70,14 @@ fun DetailsContent(
             contentDescription = ""
         )
 
-        Box(modifier = Modifier.align(Alignment.BottomCenter)){
+        Box(modifier = Modifier.align(Alignment.BottomCenter)) {
 
             BottomSheet(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.5f)
             ) {
-                DetailsBottomSheetContent(state,detailsInteraction)
+                DetailsBottomSheetContent(state, detailsInteraction)
             }
 
 

@@ -34,7 +34,7 @@ fun DetailsBottomSheetContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 32.dp, start = 32.dp, end = 32.dp)
+            .padding(top = 32.dp, start = 32.dp, end = 32.dp, bottom = 16.dp)
     ) {
         Text(text = state.title, style = Typography.headlineMedium.copy(color = Pink90))
         Text(
@@ -91,11 +91,10 @@ fun DetailsBottomSheetContent(
             }
         }
 
-        Spacer(modifier = Modifier.weight(1f))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().weight(1f).padding(top = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = "€${state.price}",

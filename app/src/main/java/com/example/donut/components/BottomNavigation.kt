@@ -1,5 +1,6 @@
 package com.example.donut.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,7 +31,7 @@ import com.example.donut.ui.theme.Pink90
 @Composable
 fun BottomNavBar(navController: NavHostController) {
     val current = navController.currentBackStackEntryAsState()
-    val selectedScreen = current.value?.destination?.route ?: AppDestination.HomeScreen.route
+    val selectedScreen = current.value?.destination?.route
 
     val icons = remember {
         mutableStateOf(
@@ -43,7 +44,8 @@ fun BottomNavBar(navController: NavHostController) {
             )
         )
     }
-    if (selectedScreen != AppDestination.BoardingScreen.route && selectedScreen != AppDestination.DetailsScreen.route) {
+
+    AnimatedVisibility(visible = selectedScreen == AppDestination.HomeScreen.route) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
